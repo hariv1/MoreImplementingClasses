@@ -524,7 +524,7 @@ class Line(object):
           :rtype: Line:
         """
         # --------------------------------------------------------------
-        # TODO: 9.
+        # DONE: 9.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -532,6 +532,14 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        new_start_x = self.start.x + other_line.start.x
+        new_start_y = self.start.y + other_line.start.y
+        new_start = Point(new_start_x, new_start_y)
+        new_end_x = self.end.x + other_line.end.x
+        new_end_y = self.end.y + other_line.end.y
+        new_end = Point(new_end_x, new_end_y)
+        return Line(new_start, new_end)
+
 
     def line_minus(self, other_line):
         """
