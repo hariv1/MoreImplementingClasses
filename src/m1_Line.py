@@ -531,6 +531,10 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
 
+        line_start = self.start.plus(other_line.start)
+        line_end = self.end.plus(other_line.end)
+        return Line(line_start,line_end)
+
 
 
     def line_minus(self, other_line):
