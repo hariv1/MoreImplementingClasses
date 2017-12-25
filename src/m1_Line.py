@@ -570,6 +570,9 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        line_start = self.start.minus(other_line.start)
+        line_end = self.end.minus(other_line.end)
+        return Line(line_start,line_end)
 
 
 
