@@ -15,8 +15,8 @@ def main():
     # --------------------------------------------------------------
 
     run_test_simple_t()
-    # run_test_set_colors()
-    # run_test_move_by()
+    run_test_set_colors()
+    run_test_move_by()
     # run_test_clone()
 
 
@@ -142,11 +142,10 @@ class CapitalT(object):
         # --------------------------------------------------------------
         c1 = rg.Point(intersection_center.x + (width/2),
                       intersection_center.y - (letter_thickness/2))
-        c2 = rg.Point(intersection_center.x - (width/2),
-                      intersection_center.y + (letter_thickness/2))
+        c2 = rg.Point(c1.x - width, c1.y + letter_thickness)
         self.h_rect = rg.Rectangle(c1, c2)
         c3 = rg.Point(intersection_center.x + (letter_thickness/2),
-                      c1.y)
+                      intersection_center.y - (letter_thickness / 2))
         c4 = rg.Point(c3.x-letter_thickness, c3.y + height)
         self.v_rect = rg.Rectangle(c3, c4)
 
@@ -202,12 +201,17 @@ class CapitalT(object):
           :type outline_color: str
         """
         # --------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     set_colors.pdf.
         # --------------------------------------------------------------
+        self.h_rect.fill_color = fill_color
+        self.v_rect.fill_color = fill_color
+
+        self.h_rect.outline_color = outline_color
+        self.v_rect.outline_color = outline_color
 
     def move_by(self, dx, dy):
         """
@@ -232,13 +236,26 @@ class CapitalT(object):
           :type dy: int
         """
         # --------------------------------------------------------------
-        # TODO: 6.
+        # DONE: 6.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
+
+        self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.h_rect.corner_2.x = self.h_rect.corner_2.x + dx
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
+
+        self.v_rect.corner_1.x = self.v_rect.corner_1.x + dx
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
+        self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
+
+
+
 
     def clone(self):
         """
